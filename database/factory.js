@@ -12,11 +12,25 @@
 */
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
-// const Factory = use('Factory')
+const Factory = use('Factory');
 
-// Factory.blueprint('App/Models/Pokemon', (faker) => {
-//   return {
-//     username: faker.username()
-//   }
-// })
+Factory.blueprint('App/Models/Pokemon', faker => {
+  return {
+    name: faker.word({ words: 3 }),
+    image_url: faker.avatar(),
+    latitude: faker.latitude(),
+    longitude: faker.longitude()
+  };
+});
 
+Factory.blueprint('App/Models/Type', faker => {
+  return {
+    name: faker.word({ words: 4 })
+  };
+});
+
+Factory.blueprint('App/Models/Catogory', faker => {
+  return {
+    name: faker.word({ words: 4 })
+  };
+});
