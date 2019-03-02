@@ -8,6 +8,11 @@ class TypeSchema extends Schema {
     this.create('types', table => {
       table.increments();
       table.string('name').notNullable();
+      table
+        .integer('pokemon_id')
+        .unsigned()
+        .references('id')
+        .inTable('pokemons');
       table.timestamps();
     });
   }
