@@ -5,11 +5,11 @@ const Model = use('Model');
 
 class Pokemon extends Model {
   types() {
-    return this.hasMany('App/Models/Type');
+    return this.belongsToMany('App/Models/DetailType');
   }
 
   category() {
-    return this.hasOne('App/Models/Category');
+    return this.belongsTo('App/Models/Category');
   }
 }
 

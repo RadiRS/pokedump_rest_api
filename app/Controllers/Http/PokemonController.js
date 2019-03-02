@@ -9,7 +9,6 @@ class PokemonController {
   async pokemons({ params, request }) {
     // console.log(params, request('limit'));
     return await Pokemon.query()
-      .with('types')
       .with('category')
       .fetch();
     // .offset(limit)
@@ -20,18 +19,18 @@ class PokemonController {
   async show({ params: { id } }) {
     return await Pokemon.query()
       .where('id', id)
-      .with('types')
+      // .with('types')
       .with('category')
       .fetch();
   }
 
   // Add data pokemon
-  async store({ request }) {
+  async store({ request, response }) {
     const rules = {
       name: 'required',
       image_url: 'required',
-      type_ids: 'required',
-      catagory_id: 'required',
+      // type_ids: 'required',
+      category_id: 'required',
       latitude: 'required',
       longitude: 'required'
     };
@@ -39,9 +38,9 @@ class PokemonController {
     const messages = {
       'name.required': 'Name is required',
       'image_url.required': 'Image is required',
-      'type_ids.required': 'Type is required',
+      // 'type_ids.required': 'Type is required',
       'category_id.required': 'Category is required',
-      'latitude.required': 'Location is required',
+      'latitude.required': 'Location   is required',
       'longitude.required': 'Location is required'
     };
 
@@ -54,7 +53,7 @@ class PokemonController {
     }
 
     try {
-      // return await Pokemon.create(request.all());
+      return await Pokemon.create(request.all());
     } catch (error) {
       return { error };
     }

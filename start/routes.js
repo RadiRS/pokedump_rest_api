@@ -5,6 +5,7 @@ const Route = use('Route');
 Route.group(() => {
   // Route Pokemons
   Route.get('pokemons', 'PokemonController.pokemons');
+  Route.post('pokemons', 'PokemonController.store');
   Route.get('pokemons/:id', 'PokemonController.show');
   Route.patch('pokemons/:id', 'PokemonController.update');
   Route.delete('pokemons/:id', 'PokemonController.delete');

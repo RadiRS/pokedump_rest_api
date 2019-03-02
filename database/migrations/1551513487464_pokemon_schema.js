@@ -9,16 +9,16 @@ class PokemonSchema extends Schema {
       table.increments();
       table.string('name').notNullable();
       table.string('image_url').notNullable();
-      // table
-      //   .integer('type_ids')
-      //   .unsigned()
-      //   .references('id')
-      //   .inTable('types');
-      // table
-      //   .integer('category_id')
-      //   .unsigned()
-      //   .references('id')
-      //   .inTable('categories');
+      table
+        .integer('user_id')
+        .unsigned()
+        .references('id')
+        .inTable('users');
+      table
+        .integer('category_id')
+        .unsigned()
+        .references('id')
+        .inTable('categories');
       table.string('latitude').notNullable();
       table.string('longitude').notNullable();
       table.timestamps();
