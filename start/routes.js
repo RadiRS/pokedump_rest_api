@@ -10,6 +10,12 @@ Route.group(() => {
   Route.patch('pokemons/:id', 'PokemonController.update');
   Route.delete('pokemons/:id', 'PokemonController.delete');
 
+  // Route Categories
+  Route.get('categories', 'CategoryController.categories');
+
+  // Route Types
+  Route.get('types', 'TypeController.types');
+
   // Route User
   Route.get('user', 'UserController.self').middleware('auth');
   Route.patch('user/:id', 'UserController.update');

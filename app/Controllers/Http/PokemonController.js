@@ -62,7 +62,11 @@ class PokemonController {
   // Delete data pokemen
   async delete({ params: { id } }) {
     const data = await Pokemon.find(id);
-    return await data.delete();
+    await data.delete();
+    return {
+      message: 'Deleted succes',
+      id
+    };
   }
 }
 
